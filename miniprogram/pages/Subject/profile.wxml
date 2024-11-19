@@ -1,0 +1,64 @@
+<scroll-view class="container" style="background-image: url('/image/rainbow.png'); background-size: cover; width: 100%; height: 100vh;">
+  <!-- 顶部标题 -->
+  <view class="second">
+    <text class="text1">题目集更改</text>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="请输入" />
+  </view>
+
+  <!-- 题目集第一行 -->
+  <view class="row">
+    <view
+      id="item-0"
+      class="item {{selectedSet === 'C语言题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="C语言题目集"
+      data-index="0"
+    >
+      <image src="/image/C++.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">C语言题目集</text>
+    </view>
+    <view
+      id="item-1"
+      class="item {{selectedSet === 'Java题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="Java题目集"
+      data-index="1"
+    >
+      <image src="/image/Java.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">Java题目集</text>
+    </view>
+  </view>
+
+  <!-- 题目集第二行 -->
+  <view class="row">
+    <view
+      id="item-2"
+      class="item {{selectedSet === '数据结构题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="数据结构题目集"
+      data-index="2"
+    >
+      <image src="/image/DataStructure.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">数据结构题目集</text>
+    </view>
+    <view
+      id="item-3"
+      class="item {{selectedSet === 'Python语言题目集' ? 'item-selected' : ''}}"
+      bindtap="chooseSet"
+      data-set="Python语言题目集"
+      data-index="3"
+    >
+      <image src="/image/Python.png" class="item-image" mode="aspectFill"></image>
+      <text class="item-text">Python语言题目集</text>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="forth">
+    <button class="return" bindtap="goBack" style="width:100%">返回</button>
+  </view>
+</scroll-view>

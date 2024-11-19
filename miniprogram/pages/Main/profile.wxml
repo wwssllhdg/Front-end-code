@@ -1,0 +1,54 @@
+<navigation-bar title="注册" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="container" style="background-image: url('/image/rainbow.png'); background-size: cover; width: 100%; height: 100vh;">
+  <view class="outer">
+      <view class="first" >          
+           <view class="choose" bindtap="navigateToSubject">
+                <text class="text1">
+                  题目集选择
+                </text>
+           </view>
+           <image class="picture1" mode="widthFix" src="/image/profilepicture.png" bindtap="navigateToUserInformation"></image>
+      </view>
+      
+      <view class="second">
+           <image class="picture2" mode="widthFix" src="/image/c.png"></image> 
+            <text class="text2">C语言题目集</text>
+      </view>
+      
+      <view class="third">
+            <text class="text3">
+                  上一次测试成绩
+            </text>
+            <text class="text4">
+                  85
+            </text>
+            <text class="text5">
+                  您的C语言等级评定
+            </text>
+            <view class="pentagram">
+                <view class="star1"></view>
+                <view class="star1"></view>
+                <view class="star"></view>
+                <view class="star"></view>
+            </view>
+      </view>
+
+      <view class="forth" >
+          <view class="Test" bindtap="navigateToTest">
+                <text class="text6">
+                  Test
+                </text>
+           </view>
+      </view>
+
+      <view class="fifth">
+        <view class="TestRecord" bindtap="navigateToRecord">
+                <text class="text7">
+                  测试记录
+                </text>
+           </view>
+      </view>
+
+      
+  </view>
+</scroll-view>

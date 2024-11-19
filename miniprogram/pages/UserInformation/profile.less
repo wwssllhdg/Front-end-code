@@ -1,0 +1,123 @@
+.container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    width: 100%;
+    box-sizing: border-box; /* 确保内边距不会增加宽度 */
+  }
+  
+.profile-section {
+    display: flex;
+    position: relative;
+    text-align: center; /* 中心对齐 */
+    margin-bottom: 60px; /* 下边距 */
+    margin-top: 20px; /* 调整上边距以向上移动 */
+}
+
+.profile-title {
+    flex: 1;
+    font-size: 30px; /* 字体大小 */
+    font-weight: bold; /* 粗体 */
+    margin-left: 10px;
+    position: relative;
+    margin-top: 60px;
+    width: 150px;
+}
+
+.profile-image {
+    width: 100px; /* 图片宽度 */
+    height: 100px; /* 图片高度 */
+    border-radius: 50%; /* 设置为圆形 */
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+.info-item {
+    display: flex; /* 使用Flexbox布局 */
+    justify-content: space-between; /* 两端对齐 */
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 10px; /* 下边距 */
+    padding: 10px; /* 内边距 */
+    background-color: #fff; /* 背景色 */
+    border-radius: 5px; /* 圆角 */
+}
+
+.info-label {
+    font-size: 16px; /* 字体大小 */
+    color: #333; /* 字体颜色 */
+    width:60px;
+}
+
+.info-input {
+    flex: 1; /* 填满剩余空间 */
+    font-size: 16px; /* 字体大小 */
+    color: #555 !important; /* 字体颜色 */
+    background-color: rgba(255, 255, 255, 0) !important; /* 透明背景 */
+    border: none; /* 移除边框 */
+    outline: none; /* 移除焦点轮廓 */
+    align-items: center; /* 垂直居中 */
+    text-align: center;
+    opacity: 0.8;
+}
+
+.gender-options {
+    display: flex; /* 使用 Flexbox 布局 */
+    justify-content: center; /* 水平居中对齐 */
+    align-items: center; /* 垂直居中对齐 */
+    width: 100%; /* 容器宽度为 100% */
+    flex-wrap: nowrap; /* 防止换行 */
+  }
+  
+  /* 选中状态的样式 */
+.gender.selected {
+    background-color: #007aff; /* 背景色 */
+    color: white; /* 文字颜色 */
+    border-color: #007aff; /* 边框颜色 */
+  }
+  
+  
+  .gender {
+    padding: 5px 10px; /* 内边距 */
+    margin-left: 5px; /* 左边距 */
+    background-color: #fff; /* 背景色 */
+    border: 1px solid #ccc; /* 边框 */
+    border-radius: 5px; /* 圆角 */
+    text-align: center; /* 确保文字在按钮内居中 */
+    width: 100px; /* 设置固定宽度 */
+  }
+  
+.save-button {
+    flex: 1; /* 填满剩余空间 */
+    width: 50%;
+    margin-top: 20px; /* 上边距 */
+    padding: 15px; /* 内边距 */
+    margin-left:80px;
+    align-items: center; /* 垂直居中 */
+    background-color: #ffffff; /* 按钮背景色 */
+    border-radius: 5px; /* 圆角 */
+    justify-content: center;
+    text-align: center; /* 中心对齐 */
+    opacity: 0.8;
+}
+
+.save-text {
+    color: #000000; /* 字体颜色 */
+    font-size: 18px; /* 字体大小 */
+}
+.return-button {
+    flex: 1; /* 填满剩余空间 */
+    width: 50%;
+    margin-top: 20px; /* 上边距 */
+    padding: 15px; /* 内边距 */
+    margin-left:80px;
+    align-items: center; /* 垂直居中 */
+    background-color: #ffffff; /* 按钮背景色 */
+    border-radius: 5px; /* 圆角 */
+    justify-content: center;
+    text-align: center; /* 中心对齐 */
+    opacity: 0.8;
+}
+
+.return{
+    color: #000000; /* 字体颜色 */
+    font-size: 18px; /* 字体大小 */
+}

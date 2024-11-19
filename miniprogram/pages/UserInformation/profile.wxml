@@ -1,0 +1,47 @@
+<scroll-view class="container" style="background-image: url('/image/rainbow.png'); background-size: cover; width: 100%; height: 100vh;">
+  
+  <!-- 个人资料部分 -->
+  <view class="profile-section">
+    <text class="profile-title">个人资料</text>
+    <image src="/image/profilepicture.png" class="profile-image" mode="aspectFill"></image>
+  </view>
+
+  <!-- 五行文本框 -->
+  <view class="info-item">
+    <text class="info-label">昵称|</text>
+    <input class="info-input" value="{{nickname}}" bindinput="onNicknameChange" />
+  </view>
+
+  <view class="info-item">
+    <text class="info-label">性别|</text>
+    <view class="gender-options">
+      <view class="gender male {{selectedGender === 'male' ? 'selected' : ''}}" bindtap="chooseGender" data-gender="male">男</view>
+      <view class="gender female {{selectedGender === 'female' ? 'selected' : ''}}" bindtap="chooseGender" data-gender="female">女</view>
+    </view>
+  </view>
+
+  <view class="info-item">
+    <text class="info-label">生日|</text>
+    <input class="info-input" value="{{birthdate}}" bindinput="onBirthdateChange" />
+  </view>
+
+  <view class="info-item">
+    <text class="info-label">签名|</text>
+    <input class="info-input" value="{{signature}}" bindinput="onSignatureChange" />
+  </view>
+
+  <view class="info-item">
+    <text class="info-label">学校|</text>
+    <input class="info-input" value="{{school}}" bindinput="onSchoolChange" />
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-button" bindtap="saveProfile">
+    <text class="save-text">保存个人资料</text>
+  </view>
+
+  <view class="return-button" bindtap="return">
+    <text class="return">返回</text>
+  </view>
+
+</scroll-view>

@@ -1,0 +1,41 @@
+<scroll-view class="container" style="background-image: url('/image/rainbow.png'); background-size: cover; width: 100%; height: 100vh;">
+  
+  <!-- 测试成绩单 -->
+  <view class="score-title">测试成绩单</view>
+  
+  <!-- 分数块 -->
+  <view class="score-section">
+    <view class="score-item">满分：100</view>
+    <view class="score-item">得分：90</view>
+  </view>
+  
+  <!-- 圆形图标 -->
+  <view class="circle-container">
+  <view class="circle circle1">1</view>
+  <view class="circle circle2">2</view>
+  <view class="circle circle3">3</view>
+  <view class="circle circle4">4</view>
+  <view class="circle circle5">5</view>
+  <view class="circle circle6">6</view>
+  <view class="circle circle7">7</view>
+  <view class="circle circle8">8</view>
+  <view class="circle circle9">9</view>
+  <view class="circle circle10">10</view>
+</view>
+
+  
+  <!-- 说明文字 -->
+  <view class="description">你打败了89%的参赛选手</view>
+  <view class="description">你的代码分析能力较强</view>
+  <view class="description">你的逻辑运算能力较弱</view>
+  
+  <!-- 环形图 -->
+  <view class="ring-chart">
+    <text>环形图（此处可以用 canvas 或其他方式绘制环形图）</text>
+  </view>
+  
+  <!-- 确认框 -->
+  <view class="confirm-box">
+    <text>我已知晓</text>
+  </view>
+</scroll-view>

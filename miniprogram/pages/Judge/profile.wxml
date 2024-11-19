@@ -1,0 +1,38 @@
+<navigation-bar title="注册" back="{{true}}" color="white" background= white ></navigation-bar>
+
+<scroll-view class="container" style="background-image: url('/image/rainbow.png'); background-size: cover; width: 100%; height: 100vh;">
+  <!-- 自定义返回图标 -->
+  <view class="first">
+    <image class="back-icon" src="/image/Return.jpg" alt="返回" bindtap="goBack"></image>
+  </view>
+
+  <!-- 题目描述 -->
+  <view class="second">
+    <text class="text1">
+      In a Turnpike Reconstruction Problem, given distance set D = { 2, 2, 4, 4, 6, 8 }, x1~x4 = ( 0, 2, 4, 8 ) is the only solution provided that x1 = 0.
+    </text>
+  </view>
+
+  <!-- True / False -->
+  <view class="third">
+    <view class="True">
+      <text class="text2">True</text>
+    </view>
+    <view class="False">
+      <text class="text3">False</text>
+    </view>
+  </view>
+
+  <!-- 上一题/下一题 -->
+  <view class="forth">
+    <view class="Previousquestion">
+      <text class="text4">上一题</text>
+    </view>
+    <text class="text5">7/10</text>
+    <view class="Nextquestion">
+      <text class="text6">下一题</text>
+    </view>
+  </view>
+
+
+</scroll-view>
