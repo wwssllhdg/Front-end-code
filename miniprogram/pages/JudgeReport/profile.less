@@ -43,14 +43,6 @@
   margin-top: 40px;
 }
 
-.title{
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-  margin-left:105px;
-  margin-top: 50px;
-}
 /* 题目内容容器 */
 .second {
   display: flex;
@@ -77,6 +69,15 @@
   color: #0056D2;          /* 蓝色，与第一张图的颜色一致 */
   font-size: 18px;         /* 序号字体大小 */
 }
+.title{
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  margin-left:110px;
+  margin-top: 50px;
+}
+
 .third {
   display: flex;
   flex-direction: column; // 垂直排列选项
@@ -84,15 +85,39 @@
   margin-top: 40px;
 }
 
+/* 正确选项整体样式 */
+.option-container.correct {
+  background-color:#26de81  !important;  /* 清新绿 */
+  color: white !important;               /* 文字颜色为白色 */
+}
+
+/* 正确选项的序号样式 */
+.option-container.correct .option-prefix {
+  background-color: #66bb6a !important;  /* 青柠绿 */
+  color: white !important;               /* 文字颜色为白色 */
+}
+
+
+
+/* 错误选项整体样式 */
+.option-container.incorrect {
+  background-color: #ff6b6b !important;  /* 深红色 */
+  color: white !important;               /* 文字颜色为白色 */
+}
+
+/* 错误选项的序号样式 */
+.option-container.incorrect .option-prefix {
+  background-color:#f44336  !important;  /* 浅红色 */
+  color: white !important;               /* 文字颜色为白色 */
+}
+
+
 
 .TrueClass {
   margin-top: 50px; // True 选项与 False 选项的间距
 }
 
-.selected {
-  background-color: #4caf50; // 选中背景
-  color: white;
-}
+
 
 .text2,
 .text3 {
@@ -125,6 +150,7 @@
   box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
 }
 
+
 .Nextquestion{
   margin-left: 50px;
   display: flex; /* 启用弹性布局 */
@@ -146,6 +172,10 @@
   font-size: large;
   font-weight: 500;
 }
+.text7 {
+  font-size: large;
+  font-weight: 600;
+}
 
 .text5 {
   font-size: x-large;
@@ -155,17 +185,6 @@
 .transparent {
   opacity: 0; /* 全透明 */
   pointer-events: none; /* 禁用点击事件 */
-}
-.correct {
-  background-color: #4CAF50;  /* 绿色 */
-  color: white;
-  opacity: 1;  /* 取消透明度 */
-}
-
-.incorrect {
-  background-color: #f44336;  /* 红色 */
-  color: white;
-  opacity: 1;  /* 取消透明度 */
 }
 
 .AnswerResult{
@@ -177,14 +196,6 @@
 }
 
 
-.text9{
-  font-size: large;
-  font-weight: 700;
-  max-width: 150px;
-  position: relative;
-  margin-left: 110px;
-  text-align: center; /* 文字水平居中 */
-}
 
 
 /* 选项容器样式 */
@@ -245,10 +256,32 @@
 
 
 .B{
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 .Submit{
-  margin-left: 50px;
+   
+  display: flex; /* 启用弹性布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  background-color: #4095E5 !important; /* 使用!important提高优先级 */
+  color: white; /* 按钮字体颜色 */
+  border: none; /* 去掉默认边框 */
+  border-radius: 20px; /* 圆角 */
+  height: 45px; /* 按钮高度 */
+  width: 80%; /* 按钮宽度 */
+  font-size: 18px; /* 按钮文字大小 */
+  font-weight: bold; /* 按钮文字粗细 */
+  box-shadow: 6px 6px 6px 2px rgba(0, 0, 0, 0.1); /* 四周阴影均匀 */
+}
+
+.p1{
+  width: 35%;
+  height: 100%;
+}
+.Answer{
+  margin-left: 150px;
+  margin-top: 00px;
+  margin-bottom: 40px;
   display: flex; /* 启用弹性布局 */
   justify-content: center; /* 水平居中 */
   align-items: center; /* 垂直居中 */

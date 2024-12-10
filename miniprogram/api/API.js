@@ -28,21 +28,22 @@ export const GetUserInformation = (params) => {
     // 调用封装的 request 方法
     return request({
       url: '/user/getUserInformation',       // 接口地址
-      method: 'POST',           // 请求方法
+      method: 'GET',           // 请求方法
       data: params,             // 请求参数作为一个对象传入
     });
   };
 
 
-//更新用户个人信息
-export const UpdateUserInformation = (params) => {
-    // 调用封装的 request 方法
-    return request({
-      url: '/user/updateUserInformation',       // 接口地址
-      method: 'PUT',           // 请求方法
-      data: params,             // 请求参数作为一个对象传入
-    });
-  };
+// 更新用户个人信息
+export const UpdateUserInformation = (id, params) => {
+  // 拼接 URL 动态参数
+  return request({
+    url: `/user/updateUserInformation/${id}`, // 将 userId 添加到 URL
+    method: 'PUT', // 请求方法
+    data: params, // 请求参数
+  });
+};
+
 
 
 //首页信息获取
@@ -111,3 +112,30 @@ export const ShowAllTestRecord = (params) => {
       data: params,             // 请求参数作为一个对象传入
     });
   };
+
+
+
+  export const TokenOutTime = (showToast = true) => {
+    if (showToast) {
+      wx.showToast({
+        title: '登录过期,请重新登录',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  
+    // 清除本地缓存的 token 和用户信息
+    wx.removeStorageSync('token');
+    wx.removeStorageSync('userInfo');
+  
+    // 跳转到登录页面
+    wx.redirectTo({
+      url: '/pages/Log/profile' // 修改为你的登录页路径
+    });
+  };
+
+
+// import { TokenOutTime } from '../../api/API.js'; // 根据你的路径导入
+// // 调用时可以选择是否显示提示信息
+// TokenOutTime();           // 显示提示并跳转
+// TokenOutTime(false);      // 不显示提示，直接跳转

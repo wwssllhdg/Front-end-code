@@ -6,7 +6,9 @@ Page({
     code: '',
     password: ''
   },
-
+  goBack(){
+      wx.redirectTo({url: '/pages/Log/profile'});
+  },
   // 获取手机号输入框的值
   onPhoneInput(event: { detail: { value: any; }; }) {
     this.setData({
@@ -27,28 +29,12 @@ Page({
       password: event.detail.value
     });
   },
-  onGetCode(){
-    const { phoneNumber, code, password } = this.data;
-    const phonePattern = /^[1][3-9][0-9]{9}$/;  // 简单的中国大陆手机号正则（11位数字，以1开头，第二位为3-9）
-    if (!phonePattern.test(phoneNumber)) {
-      wx.showToast({
-        title: '手机号格式不正确',
-        icon: 'none',
-        duration: 2000,
-      });
-      return;
-    } 
-    wx.showToast({
-      title: '验证码已经发送至您的手机',
-      icon: 'success',
-      duration: 2000,
-    });
-  },
+
   // 点击注册按钮时触发
   onRegister() {
     const { phoneNumber, code, password } = this.data;
     console.log('用户手机号:', phoneNumber);
-    console.log('用户验证码:', code);
+    console.log('用户密码:', code);
     console.log('用户密码:', password);
     // 检查是否填写了所有必要的字段
     if (!phoneNumber || !code || !password) {
@@ -68,16 +54,6 @@ Page({
        });
        return;
      }
-       // 验证验证码格式：必须是6位数字
-      const verificationCodePattern = /^\d{6}$/;
-      if (!verificationCodePattern.test(code)) {
-        wx.showToast({
-          title: '验证码必须是6位数字',
-          icon: 'none',
-          duration: 2000,
-        });
-        return;
-      }
      // 验证密码长度（例如 6-20 位）
      if (password.length < 6 || password.length > 20) {
        wx.showToast({
@@ -98,10 +74,17 @@ Page({
        });
        return;
      }
-   
+     if(code != password){
+      wx.showToast({
+        title: '两次输入密码必须相同',
+        icon: 'none',
+        duration: 2000,
+      });
+      return;
+     }
     
     // 向后端发送请求
-    UserRegister({phoneNumber,password})
+    UserRegister({userPhone: phoneNumber, userPassword: password})
     .then((response) => {
       if (response.code === 200) {       
         wx.showToast({
@@ -109,24 +92,26 @@ Page({
           icon: 'success',
           duration: 2000,
         });
+         // 使用 setTimeout 延迟执行跳转，确保 Toast 显示时不被打断
+          wx.redirectTo({url: '/pages/Log/profile',});
 
-        // 跳转到首页
-        wx.switchTab({
-          url: '/pages/Log/index',
-        });
-      } else {
+
+      } else if(response.code === 403){
+        //存在用户已存在的情况
         wx.showToast({
-          title: response.msg || '注册失败',
-          icon: 'error',
+          title: '用户已存在',
+          icon: 'none',
           duration: 2000,
         });
+         // 
+
       }
     })
     .catch((error) => {
       console.error('注册失败:', error);
       wx.showToast({
         title: '网络异常，请稍后重试',
-        icon: 'error',
+        icon: 'none',
         duration: 2000,
       });
     });    

@@ -1,6 +1,7 @@
+// import { TokenOutTime } from '../../api/API.js'; // 根据你的路径导入
 // 全局请求封装
 const base_url = 'http://106.54.212.158:8888';
-
+//const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzI5MzMzNjcsInVzZXJJRCI6IjIzIiwidGltZXN0YW1wIjoiMTczMjkzMzMwNzA4OCJ9.KtnUbk2ImplqfpI03kmwazQwxJXDWnDrRj26K3wByhc';
 //默认导出 js里只有先导出一个模块，才能在别处使用此模块
 export default (params) => {
   let url = params.url;
@@ -19,7 +20,7 @@ export default (params) => {
   // 获取本地token
   const token = wx.getStorageSync("token");
   if (token) {
-    header['Authorization'] = 'Bearer ' + token;
+    header['token'] =  token;
   }
  //Token 通常是 服务器 在用户登录成功后发放给客户端的
  //Token 可以类比为一个 临时的用户ID
@@ -37,40 +38,14 @@ export default (params) => {
 
       data: data,
       success(response) {
+
+        console.log("请求成功，response：", response); // 查看完整的响应数据
+        // if(response.statusCode === 401){
+        //   TokenOutTime();
+        // }
         const res = response.data;
-        if (res.statusCode == 200) {
+        console.log("响应数据：", res);       
           resolve(res);
-        } else {
-          wx.clearStorageSync();//请求失败时清楚本地存储
-          switch (res.statusCode) {
-            case 401:  // 401 未授权，通常是token无效或过期
-              wx.showModal({
-                title: "提示",
-                content: "请登录",
-                showCancel: false,
-                success(res) {
-                  setTimeout(() => {
-                    wx.navigateTo({
-                      url: "/pages/login/index",// 跳转到登录页面
-                    });
-                  }, 1000);// 延时 1 秒跳转，会给用户一些提示时间
-                },
-              });
-              break;
-            case 404:
-              wx.showToast({
-                title: '请求地址不存在...',
-                duration: 2000,
-              });
-              break;
-            default:
-              wx.showToast({
-                title: '请重试...',
-                duration: 2000,
-              });
-              break;
-          }
-        }
       },
       fail(err) {
         console.log(err);

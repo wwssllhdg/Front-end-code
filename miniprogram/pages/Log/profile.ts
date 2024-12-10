@@ -1,12 +1,13 @@
 import { UserLogin } from '../../api/API.js';
 
+
 Page({
   data: {
     userPhone: '',
     userPassword: '',
   },
   onRegister(){
-    wx.navigateTo({ url: '/pages/Register/profile' });
+    wx.redirectTo({ url: '/pages/Register/profile' });
   },
   // 手机号输入变化事件
   onPhoneInput(e: { detail: { value: any; }; }) {
@@ -23,7 +24,7 @@ Page({
   },
 
   // 登录按钮事件
-  onLogin() {
+  onLogin: async function() {
     const { userPhone, userPassword } = this.data;
     // 输出手机号和密码
     console.log('用户手机号:', userPhone);
@@ -47,31 +48,10 @@ Page({
         });
         return;
       }
-
-      // 验证密码长度（例如 6-20 位）
-      if (userPassword.length < 6 || userPassword.length > 20) {
-        wx.showToast({
-          title: '密码长度应为6-20位',
-          icon: 'none',
-          duration: 2000,
-        });
-        return;
-      }
-
-      // 验证密码复杂性：至少包含字母和数字
-      const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d).{6,20}$/;
-      if (!passwordPattern.test(userPassword)) {
-        wx.showToast({
-          title: '密码必须包含字母和数字',
-          icon: 'none',
-          duration: 2000,
-        });
-        return;
-      }
-
     // 调用登录 API
-    UserLogin({ userPhone, userPassword }) // 参数以对象形式传递
-      .then((response) => {
+    const response = await UserLogin({ userPhone, userPassword });
+    console.log("登录成功，返回数据：", response);
+
         if (response.code === 200) {
           const { userId, token } = response.data;
           wx.setStorageSync('token', token); // 存储 token 到本地
@@ -86,26 +66,28 @@ Page({
             duration: 2000,
           });
 
-          // 跳转到首页
-          wx.switchTab({
-            url: '/pages/Main/profile',
-          });
-        } else {
+        // 使用 setTimeout 延迟执行跳转，确保 Toast 显示时不被打断  
+          wx.redirectTo({url: '/pages/Main/profile'}); // 延时 2 秒后跳转
+
+        } else if(response.code == 403) {
           wx.showToast({
-            title: response.msg || '登录失败',
+            title: response.msg || '用户不存在',
+            icon: 'error',
+            duration: 2000,
+          });
+        }else if(response.code == 401) {
+          wx.showToast({
+            title: response.msg || '账号密码错误',
+            icon: 'error',
+            duration: 2000,
+          });
+        }else{
+          wx.showToast({
+            title: response.msg || '登录失败，请稍后重试',
             icon: 'error',
             duration: 2000,
           });
         }
-      })
-      .catch((error) => {
-        console.error('登录失败:', error);
-        wx.showToast({
-          title: '网络异常，请稍后重试',
-          icon: 'error',
-          duration: 2000,
-        });
-      });
-  }
-  
+}
 });
+  

@@ -1,6 +1,6 @@
 import { GetHomepageInformation } from "../../api/API"; 
 import { GetTestQuestion } from "../../api/API"; 
-
+import { TokenOutTime } from '../../api/API.js'; // 根据你的路径导入
 // // 调用时可以选择是否显示提示信息
 
 Page({

@@ -1,17 +1,18 @@
 {
   "pages": [
-    "pages/Choose/profile", 
-    "pages/Log/index",
-   
-   
-   
-    "pages/Register/profile",
-    "pages/Judge/profile",
+    "pages/Log/profile",
+    "pages/Main/profile",
+    "pages/JudgeReport/profile",
+    "pages/Result/profile",
     "pages/Record/profile",
-    
+    "pages/ChooseReport/profile",
+    "pages/Judge/profile",
+    "pages/Choose/profile",
     "pages/Subject/profile",
-    "pages/UserInformation/profile"
-  
+    "pages/FinishTest/profile",
+    "pages/UserInformation/profile",
+
+    "pages/Register/profile"
   ],
   "window": {
     "navigationBarTextStyle": "black",
